@@ -479,7 +479,7 @@ int pc_getnameinfo(const struct sockaddr *sa, socklen_t salen,
 	return 0;
 }
 
-#ifdef ANDROID
+#if defined(ANDROID) && !defined(USE_NEW_VERSION_NDK_FOR_gethostbyaddr_D)
 struct hostent *gethostbyaddr(const char *addr, int len, int type) {
 #else
 struct hostent *gethostbyaddr(const void *addr, socklen_t len, int type) {
